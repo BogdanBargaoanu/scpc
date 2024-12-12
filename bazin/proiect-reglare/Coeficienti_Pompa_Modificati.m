@@ -24,7 +24,7 @@ keta = 8e-5;
 %Structură clasică de reglare cu reacție negativă
 uc = 4.5;
 ua = 4.5;
-q0 = 29.2;
+q0 = 21.8;
 h0 = 14.32;
 hpert = 18.15;
 deltah = hpert - h0;
