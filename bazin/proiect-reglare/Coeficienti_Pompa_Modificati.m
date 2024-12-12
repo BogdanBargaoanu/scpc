@@ -26,12 +26,12 @@ uc = 4.5;
 ua = 4.5;
 q0 = 29.2;
 h0 = 14.32;
-hpert = 18.15
+hpert = 18.15;
 deltah = hpert - h0;
 deltaq = 5;
 deltau = 0.5;
 Hp = tf(deltah/3,[145 1]);
-H0 = tf(1,[40.75 1]);
+H0 = tf(1,[36.25 1]);
 HR = minreal((1/Hp)*(H0/(1-H0)));
 HRPID = pidtune(HR, 'PID');
 
@@ -40,13 +40,15 @@ kcompensare = (deltah/deltaq)/(deltah/deltau);
 
 %cascada
 kp2 = deltaq/deltau;
-Tp2 = 0.7325;
+Tp2 = 1;
 Hp2 = tf(kp2, [Tp2 1]);
 H02 = tf(1, [1 1]);
 HR2 = minreal((1/Hp2)*(H02/(1-H02)));
+HR2PID = pidtune(HR2, 'PID');
 
 kp = (deltah/3)/deltaq;
-Tp = 260;
+Tp = 245;
 Hp = tf(kp, [Tp 1]);
-H01 = tf(1, [40 1]);
+H01 = tf(1, [36.25 1]);
 HR1 = minreal((1/Hp)*(H01/(1-H01)));
+HR1PID = pidtune(HR1, 'PID');
